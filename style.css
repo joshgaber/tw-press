@@ -1,0 +1,17 @@
+/*   
+Theme Name: Personal Theme
+Theme URI: http://github.com/joshgaber/tw-press
+Description: A basic website theme. Nothing special.
+Author: Josh Gaber
+Author URI: http://joshgaber.ca
+Version: 1.0
+.
+Like WordPress, this work is released under GNU General Public License, version 2 (GPL).
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+.
+*/
+
+/* Twitter Bootstrap */
+@import url('css/bootstrap.css');
+@import url('css/responsive.css');
+@import url('css/style.css');
