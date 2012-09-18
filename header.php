@@ -59,7 +59,7 @@
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Recent Posts <b class="caret"></b></a>
 				<ul class="dropdown-menu">
-<?php foreach (wp_get_recent_posts(array('numberposts' => 5)) as $p) : ?>
+<?php foreach (wp_get_recent_posts(array('numberposts' => 5, 'post_status' => 'publish')) as $p) : ?>
 
 					<li><a href="<?php print get_permalink($p['ID']); ?>" title="<?php print $p['post_title']; ?>"><strong><?php print strftime("%B %e, %Y", strtotime($p['post_date'])); ?></strong> - <?php print $p['post_title']; ?></a></li>
 					
