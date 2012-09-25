@@ -24,7 +24,7 @@
 				get_the_tag_list( __( ' and tagged ', 'your-theme' ), ', ', '' ),
 				get_permalink(),
 				the_title_attribute('echo=0'),
-				comments_rss() ) ?>
+				get_post_comments_feed_link() ) ?>
 
 			</div><!-- .entry-utility -->													
 		</div><!-- #post-<?php the_ID(); ?> -->	
@@ -40,7 +40,8 @@
 		</ul><!-- #nav-below -->
 <?php endif; ?>
 
-<?php comments_template('', true); ?>			
+<?php #comments_template('', true); ?>
+<?php comments_template('', true); ?>
 	
 	</div><!-- #content -->	
 

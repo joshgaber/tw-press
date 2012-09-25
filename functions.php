@@ -3,10 +3,10 @@
 
 // Make theme available for translation
 // Translations can be filed in the /languages/ directory
-load_theme_textdomain( 'your-theme', TEMPLATEPATH . '/languages' );
+load_theme_textdomain( 'your-theme', get_template_directory() . '/languages' );
 
 $locale = get_locale();
-$locale_file = TEMPLATEPATH . "/languages/$locale.php";
+$locale_file = get_template_directory() . "/languages/$locale.php";
 if ( is_readable($locale_file) )
 	require_once($locale_file);
 
@@ -75,10 +75,10 @@ function theme_init() {
 // Add elements to head
 function header_scripts() {
 	wp_enqueue_script("jquery");
-	wp_enqueue_script("jquery-innerlabel", get_bloginfo('template_directory') . "/js/jquery.innerlabel.js", array("jquery"), "0.1");
-	wp_enqueue_script("jquery-scrollTo", get_bloginfo('template_directory') . "/js/jquery.scrollTo.js", array("jquery"), "1.4.2");
-	wp_enqueue_script("bootstrap", get_bloginfo('template_directory') . "/js/bootstrap.js", array("jquery"), "2.0.4");
-	wp_enqueue_script("google-code-prettify", get_bloginfo('template_directory') . "/js/prettify/prettify.js", array(), "1");
+	wp_enqueue_script("jquery-innerlabel", get_template_directory_uri() . "/js/jquery.innerlabel.js", array("jquery"), "0.1");
+	wp_enqueue_script("jquery-scrollTo", get_template_directory_uri() . "/js/jquery.scrollTo.js", array("jquery"), "1.4.2");
+	wp_enqueue_script("bootstrap", get_template_directory_uri() . "/js/bootstrap.js", array("jquery"), "2.0.4");
+	wp_enqueue_script("google-code-prettify", get_template_directory_uri() . "/js/prettify/prettify.js", array(), "1");
 }
 
 function header_init() {

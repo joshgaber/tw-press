@@ -6,7 +6,7 @@
         if ( is_single() ) { single_post_title(); }       
         elseif ( is_home() || is_front_page() ) { bloginfo('description'); get_page_number(); }
         elseif ( is_page() ) { single_post_title(''); }
-        elseif ( is_search() ) { print 'Search results for ' . wp_specialchars($s); get_page_number(); }
+        elseif ( is_search() ) { print 'Search results for ' . esc_html($s); get_page_number(); }
         elseif ( is_404() ) { print 'Not Found'; }
         else { wp_title(''); get_page_number(); }
     ?></title>
@@ -15,9 +15,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>">
-	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/css/prettify.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/prettify.css">
 	
-	<link rel="icon" href="<?php bloginfo('template_directory'); ?>/img/favicon.ico" type="image/png">
+	<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" type="image/png">
 	
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	
@@ -27,8 +27,8 @@
 	<script type="text/javascript" src="/wp-includes/js/html5shiv.js"></script>
 	<![endif]-->
 	
-	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url'); ?>" title="<?php printf( __( '%s latest posts', 'your-theme' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>">
-	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'your-theme' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>">
+	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url'); ?>" title="<?php printf( __( '%s latest posts', 'your-theme' ), esc_html( get_bloginfo('name') ) ); ?>">
+	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'your-theme' ), esc_html( get_bloginfo('name') ) ); ?>">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">	
 </head>
 
@@ -75,7 +75,7 @@
 		
 		<div id="masthead">
 		
-			<a id="blog-title" href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a>
+			<a id="blog-title" href="<?php echo home_url(); ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a>
 			<?php if (is_front_page()) { ?>
 				<h1 id="blog-description"><?php bloginfo( 'description' ) ?></h1>
 			<?php } else { ?>
