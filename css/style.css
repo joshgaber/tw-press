@@ -2,6 +2,10 @@ body {
 	margin-top: 50px
 }
 
+body.admin-bar nav.navbar {
+	margin-top: 32px;
+}
+
 #wrapper {
 	background-color: #fff;
 	position: relative
