@@ -77,7 +77,7 @@ function header_scripts() {
 	wp_enqueue_script("jquery");
 	wp_enqueue_script("jquery-innerlabel", get_template_directory_uri() . "/js/jquery.innerlabel.js", array("jquery"), "0.1");
 	wp_enqueue_script("jquery-scrollTo", get_template_directory_uri() . "/js/jquery.scrollTo.js", array("jquery"), "1.4.2");
-	wp_enqueue_script("bootstrap", get_template_directory_uri() . "/js/bootstrap.js", array("jquery"), "2.0.4");
+	wp_enqueue_script("bootstrap", get_template_directory_uri() . "/js/bootstrap.js", array("jquery"), "3.3.1");
 	wp_enqueue_script("google-code-prettify", get_template_directory_uri() . "/js/prettify/prettify.js", array(), "1");
 }
 
@@ -85,7 +85,7 @@ function header_init() {
 	?>
 	<script>
 	jQuery(document).ready( function() {
-		jQuery("#s").innerlabel({
+		jQuery(".searchfield").innerlabel({
 			text: function() { return "Type your search here"; },
 			css: {'color': '#ccc', 'font-style': 'italic'}
 		});
@@ -183,7 +183,7 @@ function custom_pings($comment, $args, $depth) {
 // Bootstrap Elements
 function get_tb_edit_button () {
 	if (current_user_can('edit_posts')) {
-		$html = '<a class="post-edit-link btn btn-info" href="' . get_edit_post_link() . '" title="' . __( 'Edit Page', 'your-theme' ) . '"><i class="icon-pencil icon-white"></i> ' . __( 'Edit', 'your-theme' ) . '</a>';
+		$html = '<a class="post-edit-link btn btn-info" href="' . get_edit_post_link() . '" title="' . __( 'Edit Page', 'your-theme' ) . '"><span class="glyphicon glyphicon-pencil"></span> ' . __( 'Edit', 'your-theme' ) . '</a>';
 	} else {
 		$html = "";
 	}
@@ -227,3 +227,5 @@ class Walker_tb_nav extends Walker_Nav_Menu {
 		$output .= "</a>";
 	}
 }
+
+require_once 'functions/shortcodes.php';

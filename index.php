@@ -4,7 +4,7 @@
 	
 <?php
 if (($page = get_page_by_title("Index"))) {
-	print $page->post_content;
+	print apply_filters( 'the_content', $page->post_content );
 	print '<hr>';
 }
 ?>
@@ -25,7 +25,7 @@ if (($page = get_page_by_title("Index"))) {
 <?php while ( have_posts() ) : the_post() ?>
 
 <?php /* Create a div with a unique ID thanks to the_ID() and semantic classes with post_class() */ ?>		
-		<div id="post-<?php the_ID(); ?>" <?php post_class("span6"); ?>>				
+		<div id="post-<?php the_ID(); ?>" <?php post_class("col-lg-4 col-md-6 col-sm-6 col-xs-12"); ?>>
 <?php /* an h2 title */ ?>							
 			<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( __('Permalink to %s', 'your-theme'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			
@@ -38,12 +38,12 @@ if (($page = get_page_by_title("Index"))) {
 <?php /* The entry content */ ?>					
 			<div class="entry-content">	
 <?php the_excerpt(); ?>
-				<p class="entry-commands"><a class="btn btn-info" href="<?php the_permalink(); ?>"><i class="icon-book icon-white"></i> <?php _e( 'Continue reading', 'your-theme' ); ?></a></p>
+				<p class="entry-commands"><a class="btn btn-info" href="<?php the_permalink(); ?>"><span class="glyphicon glyphicon-book"></span> <?php _e( 'Continue reading', 'your-theme' ); ?></a></p>
 <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'your-theme' ) . '&after=</div>') ?>
 			</div><!-- .entry-content -->
 
 <?php /* Microformatted category and tag links along with a comments link */ ?>					
-			<div class="entry-utility well well-small">
+			<div class="entry-utility well well-sm">
 				<span class="cat-links"><span class="entry-utility-prep entry-utility-prep-cat-links"><?php _e( 'Posted in ', 'your-theme' ); ?></span><?php echo get_the_category_list(', '); ?></span>
 				<span class="meta-sep"> | </span>
 				<?php the_tags( '<span class="tag-links"><span class="entry-utility-prep entry-utility-prep-tag-links">' . __('Tagged ', 'your-theme' ) . '</span>', ", ", "</span> <span class=\"meta-sep\">|</span>\n" ) ?>

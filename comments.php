@@ -99,7 +99,7 @@ foreach ( $comments as $comment )
 
               <div id="form-section-comment" class="form-section control-group">
 								<label for="comment"><?php _e('Comment', 'your-theme') ?></label>
-								<div class="form-textarea controls"><textarea id="comment" name="comment" class="span4" rows="5" tabindex="6"></textarea></div>
+								<div class="form-textarea controls"><textarea id="comment" name="comment" class="form-control" rows="5" tabindex="6"></textarea></div>
               </div><!-- #form-section-comment .form-section -->
               
               <div id="form-allowed-tags" class="form-section">
@@ -108,7 +108,7 @@ foreach ( $comments as $comment )
 							
 <?php do_action('comment_form', $post->ID); ?>
                   
-							<div class="form-submit"><button id="submit" name="submit" type="submit" class="btn btn-large btn-primary" tabindex="7"><i class="icon-comment icon-white"></i> <?php _e('Post Comment', 'your-theme') ?></button><input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" /></div>
+							<div class="form-submit"><button id="submit" name="submit" type="submit" class="btn btn-large btn-primary" tabindex="7"><span class="glyphicon glyphicon-comment"></span> <?php _e('Post Comment', 'your-theme') ?></button><input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" /></div>
 
 <?php comment_id_fields(); ?>  
 

@@ -1,3 +1,6 @@
-<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>" class="navbar-search pull-right">
-	<input type="text" class="span3 search-query" value="<?php echo get_search_query(); ?>" name="s" id="s" />
+<form role="search" method="get" action="<?php echo home_url( '/' ); ?>" class="searchform navbar-form navbar-right">
+	<div class="form-group">
+		<input type="text" class="form-control searchfield" value="<?php echo get_search_query(); ?>" name="s" class="searchfield" />
+	</div>
+	<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
 </form>

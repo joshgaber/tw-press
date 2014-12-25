@@ -33,45 +33,55 @@
 </head>
 
 <body <?php body_class(); ?> onload="prettyPrint()">
+
+<ul id="access" class="sr-only">
+	<li><a href="#topnav-collapse">Go to navigation</a></li>
+	<li><a href="#content" title="<?php _e( 'Skip to content', 'your-theme' ) ?>"><?php _e( 'Skip to content', 'your-theme' ) ?></a></li>
+</ul>
 	
 <div id="wrapper" class="hfeed">
 	
-	<nav class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><div class="container">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
 	
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topnav-collapse">
+					<span class="sr-only">Toggle Navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="<?php bloginfo('siteurl'); ?>"><?php bloginfo("name"); ?></a>
+			</div>
 		
-		<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</a>
+			<div class="navbar-collapse collapse" id="topnav-collapse">
+				<?php wp_nav_menu(
+					array(
+						'theme_location' => "topnav",
+						'container' => NULL,
+						'menu_class' => "nav navbar-nav",
+						'walker' => new Walker_tb_nav()
+					)
+				); ?>
+				<ul id="recent-posts-nav" class="navbar-nav nav">
+					<li class="divider-vertical"></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Recent Posts <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+		<?php foreach (wp_get_recent_posts(array('numberposts' => 5, 'post_status' => 'publish')) as $p) : ?>
 		
-		<div class="nav-collapse">
-		<?php wp_nav_menu(
-			array(
-				'theme_location' => "topnav",
-				'container' => NULL,
-				'menu_class' => "nav",
-				'walker' => new Walker_tb_nav()
-			)
-		); ?>
-		<ul id="recent-posts-nav" class="nav">
-			<li class="divider-vertical"></li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Recent Posts <b class="caret"></b></a>
-				<ul class="dropdown-menu">
-<?php foreach (wp_get_recent_posts(array('numberposts' => 5, 'post_status' => 'publish')) as $p) : ?>
-
-					<li><a href="<?php print get_permalink($p['ID']); ?>" title="<?php print $p['post_title']; ?>"><strong><?php print strftime("%B %e, %Y", strtotime($p['post_date'])); ?></strong> - <?php print $p['post_title']; ?></a></li>
-					
-<?php endforeach; ?>
+							<li><a href="<?php print get_permalink($p['ID']); ?>" title="<?php print $p['post_title']; ?>"><strong><?php print strftime("%B %e, %Y", strtotime($p['post_date'])); ?></strong> - <?php print $p['post_title']; ?></a></li>
+							
+		<?php endforeach; ?>
+						</ul>
+					</li>
 				</ul>
-			</li>
-		</ul>
-		<?php get_search_form(); ?>
+				<?php get_search_form(); ?>
+			</div>
 		</div>
-	</div></div></nav><!-- nav.navbar -->
+	</nav><!-- nav.navbar -->
 
-	<header><div id="header-inner" class="container inner">
+	<header><div id="header-inner" class="container">
 		
 		<div id="masthead">
 		
@@ -81,11 +91,6 @@
 			<?php } else { ?>
 				<div id="blog-description"><?php bloginfo( 'description' ) ?></div>
 			<?php } ?>
-			
-			<div id="access">
-				<div class="skip-link"><a href="#content" title="<?php _e( 'Skip to content', 'your-theme' ) ?>"><?php _e( 'Skip to content', 'your-theme' ) ?></a></div>
-				
-			</div><!-- #access -->
 			
 		</div><!-- #masthead -->
 		
